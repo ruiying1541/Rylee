@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rylee歪理知识库</title>
+    <link rel="stylesheet" href="./styles.css?v=20260705-access-password">
+  </head>
+  <body class="auth-locked">
+    <section class="auth-screen" id="authScreen" aria-label="访问验证">
+      <form class="auth-card" id="authForm">
+        <img class="auth-logo" src="./assets/site-logo.png" alt="Rylee 歪理知识库 Logo">
+        <p class="auth-eyebrow">PRIVATE KNOWLEDGE BASE</p>
+        <h1>访问验证</h1>
+        <p class="auth-copy">请输入访问密码后继续查看 Rylee 歪理知识库。</p>
+        <label class="auth-field">
+          <span>访问密码</span>
+          <input id="authPassword" type="password" inputmode="numeric" autocomplete="current-password" placeholder="请输入密码" aria-describedby="authError">
+        </label>
+        <p class="auth-error" id="authError" role="alert" aria-live="polite"></p>
+        <button class="auth-submit" type="submit">进入网站</button>
+      </form>
+    </section>
+    <div class="shell" id="appShell">
+      <aside class="sidebar" aria-label="知识库导航">
+        <a class="brand" href="#/">
+          <img class="brand-logo" src="./assets/site-logo.png" alt="Rylee 歪理知识库 Logo">
+          <span>
+            <strong>Rylee</strong>
+            <small>歪理知识库</small>
+          </span>
+        </a>
+        <div class="category-list" id="categoryList"></div>
+        <nav class="quick-nav" aria-label="快捷筛选">
+          <button class="nav-item" data-view="intro">知识库简介</button>
+          <button class="nav-item" data-view="updates">最近更新</button>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <header class="topbar">
+          <label class="search">
+            <input id="searchInput" type="search" placeholder="搜索设计文章、AI 工作流、案例">
+          </label>
+          <div class="metrics">
+            <span><strong id="docCount">0</strong> 文章</span>
+            <span><strong id="wordCount">0</strong> 字</span>
+          </div>
+        </header>
+
+        <section class="workspace">
+          <div class="article-list" id="articleList" aria-label="文章列表"></div>
+          <article class="reader" id="reader" aria-label="文章正文"></article>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./app.js?v=20260705-access-password"></script>
+  </body>
+</html>
