@@ -1,0 +1,11 @@
+{
+  "name": "design-knowledge-platform",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "import:yuque": "node scripts/import-yuque-export.mjs",
+    "import:yuque-online": "node scripts/import-yuque-online.mjs"
+  }
+}

@@ -442,6 +442,7 @@ function renderNavState() {
   document.querySelectorAll(".nav-item").forEach((item) => {
     const shouldActivate =
       (item.dataset.view === "intro" && route.name === "intro") ||
+      (item.dataset.view === "catalog" && route.name === "catalog") ||
       (item.dataset.view === "updates" && route.name === "updates") ||
       (route.name === "home" && item.dataset.filter === state.filter && !state.category && !state.query);
     item.classList.toggle("active", shouldActivate);
