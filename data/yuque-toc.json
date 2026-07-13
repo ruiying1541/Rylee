@@ -2198,6 +2198,24 @@
         "id": 237409643,
         "open_window": 1,
         "visible": 1
+      },
+      {
+        "type": "DOC",
+        "title": "设计 Skill 工具集",
+        "uuid": "kim-design-skill-toolkit",
+        "url": "kim-design-skill-toolkit",
+        "prev_uuid": "",
+        "sibling_uuid": "",
+        "child_uuid": "",
+        "parent_uuid": "",
+        "doc_id": "kim-design-skill-toolkit",
+        "level": 1,
+        "id": "kim-design-skill-toolkit",
+        "open_window": 1,
+        "visible": 1,
+        "slug": "kim-design-skill-toolkit",
+        "category": "Skill库",
+        "sourceUrl": "https://docs.corp.kuaishou.com/d/home/fcADhZ7HITJ-B9y3p7x_6Xr1n"
       }
     ],
     "toc_updated_at": "2026-06-27T14:30:32.000Z",
@@ -4463,6 +4481,30 @@
       "id": 237409643,
       "open_window": 1,
       "visible": 1
+    },
+    {
+      "type": "DOC",
+      "title": "Codex零基础保姆级手册",
+      "url": "zcool-codex-zero-basic-manual",
+      "level": 1
+    },
+    {
+      "type": "DOC",
+      "title": "设计 Skill 工具集",
+      "uuid": "kim-design-skill-toolkit",
+      "url": "kim-design-skill-toolkit",
+      "prev_uuid": "",
+      "sibling_uuid": "",
+      "child_uuid": "",
+      "parent_uuid": "",
+      "doc_id": "kim-design-skill-toolkit",
+      "level": 1,
+      "id": "kim-design-skill-toolkit",
+      "open_window": 1,
+      "visible": 1,
+      "slug": "kim-design-skill-toolkit",
+      "category": "Skill库",
+      "sourceUrl": "https://docs.corp.kuaishou.com/d/home/fcADhZ7HITJ-B9y3p7x_6Xr1n"
     }
   ]
 }
