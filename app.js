@@ -3,6 +3,7 @@ const state = {
   toc: [],
   updatesArticle: null,
   introArticle: null,
+  articleDetails: new Map(),
   imageMap: {},
   query: "",
   filter: "all",
@@ -89,6 +90,7 @@ const topicMatchOrder = [
 const ACCESS_PASSWORD = "0304";
 const AUTH_STORAGE_KEY = "ryleeKnowledgeAccess";
 let hasInitialized = false;
+let articleRenderToken = 0;
 
 setupAccessGate();
 
@@ -137,7 +139,7 @@ function setupAccessGate() {
 
 async function init() {
   const [articlesResponse, tocResponse, imageMapResponse] = await Promise.all([
-    fetchJson("./data/articles.json"),
+    fetchJson("./data/articles-index.json").catch(() => fetchJson("./data/articles.json")),
     fetchJson("./data/yuque-toc.json").catch(() => null),
     fetchJson("./data/image-map.json").catch(() => ({}))
   ]);
@@ -171,7 +173,7 @@ function shouldShowArticle(article) {
 }
 
 async function fetchJson(url) {
-  const response = await fetch(url, { cache: "no-store" });
+  const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`${url} 返回 ${response.status}`);
   }
@@ -417,7 +419,8 @@ function getRecentArticles() {
     .sort(compareArticlesByLatestUpdate);
 }
 
-function renderArticle(article) {
+async function renderArticle(article) {
+  const token = ++articleRenderToken;
   if (!article) {
     articleList.innerHTML = "";
     reader.innerHTML = "";
@@ -426,7 +429,28 @@ function renderArticle(article) {
 
   const topic = getArticleTopic(article);
   articleList.innerHTML = "";
-  reader.innerHTML = `
+  reader.innerHTML = renderArticleShell(article, topic, article.html ? renderLakeHtml(article.html) : `<div class="article-loading">正文加载中...</div>`);
+
+  if (article.html) return;
+
+  try {
+    const articleDetail = await loadArticleDetail(article);
+    if (token !== articleRenderToken) return;
+    const mergedArticle = { ...article, ...articleDetail };
+    Object.assign(article, mergedArticle);
+    reader.innerHTML = renderArticleShell(mergedArticle, getArticleTopic(mergedArticle), renderLakeHtml(mergedArticle.html || ""));
+  } catch (error) {
+    if (token !== articleRenderToken) return;
+    reader.innerHTML = renderArticleShell(
+      article,
+      topic,
+      `<div class="empty-card error-card"><h2>正文加载失败</h2><p>${escapeHtml(error?.message || "请稍后重试")}</p></div>`
+    );
+  }
+}
+
+function renderArticleShell(article, topic, bodyHtml) {
+  return `
     <article class="reader-shell">
       <header class="reader-header">
         <a class="back-link" href="#/">返回首页</a>
@@ -438,9 +462,18 @@ function renderArticle(article) {
           ${article.wordCount ? `<span>${formatter.format(article.wordCount)} 字</span>` : ""}
         </div>
       </header>
-      <div class="article-body">${renderLakeHtml(article.html || "")}</div>
+      <div class="article-body">${bodyHtml}</div>
     </article>
   `;
+}
+
+async function loadArticleDetail(article) {
+  if (!article?.slug) return article;
+  if (state.articleDetails.has(article.slug)) return state.articleDetails.get(article.slug);
+
+  const detail = await fetchJson(`./data/articles/${encodeURIComponent(article.slug)}.json`);
+  state.articleDetails.set(article.slug, detail);
+  return detail;
 }
 
 function renderNavState() {
@@ -680,7 +713,7 @@ function scoreArticle(article, query) {
   const summary = normalizeSearchText(article.summary);
   const topicAndTags = normalizeSearchText([article.category, topic.title, ...(article.tags || []), ...displayTags].join(" "));
   const topicAndTagsCompact = normalizeTopicText([article.category, topic.title, ...(article.tags || []), ...displayTags].join(" "));
-  const body = normalizeSearchText(stripHtml(renderLakeHtml(article.html || "")));
+  const body = normalizeSearchText(article.searchText || "");
 
   let score = 0;
   if (title === normalizedQuery || titleCompact === compactQuery) score += 220;
@@ -714,21 +747,6 @@ function getSearchTokens(value) {
 function isSkillQuery(value) {
   const compact = normalizeTopicText(value);
   return compact.includes("skill") || compact.includes("skills") || compact.includes("技能");
-}
-
-function getSearchHaystack(article) {
-  const topic = getArticleTopic(article);
-  return [
-    article.title,
-    article.summary,
-    article.category,
-    topic.title,
-    ...(article.tags || []),
-    ...getArticleDisplayTags(article, topic),
-    stripHtml(renderLakeHtml(article.html || ""))
-  ]
-    .join(" ")
-    .toLowerCase();
 }
 
 function getArticleTopic(article) {

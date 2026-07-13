@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
+    "build:articles": "node scripts/build-article-index.mjs",
     "import:yuque": "node scripts/import-yuque-export.mjs",
     "import:yuque-online": "node scripts/import-yuque-online.mjs"
   }

@@ -781,6 +781,14 @@ body[data-route="article"] .workspace {
   word-break: break-word;
 }
 
+.article-loading {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fafafa;
+  color: var(--muted);
+  padding: 18px;
+}
+
 .article-body h1,
 .article-body h2,
 .article-body h3,
