@@ -405,10 +405,16 @@ function formatDateText(value) {
   return String(value || "").replaceAll("-", ".");
 }
 
+function compareArticlesByLatestUpdate(a, b) {
+  const dateCompare = String(b.updatedAt || "").localeCompare(String(a.updatedAt || ""));
+  if (dateCompare) return dateCompare;
+  return (b.order || 0) - (a.order || 0);
+}
+
 function getRecentArticles() {
   return [...state.articles]
     .filter((article) => article.updatedAt)
-    .sort((a, b) => String(b.updatedAt || "").localeCompare(String(a.updatedAt || "")));
+    .sort(compareArticlesByLatestUpdate);
 }
 
 function renderArticle(article) {
@@ -646,8 +652,7 @@ function getVisibleArticles() {
       .filter((item) => item.score > 0)
       .sort((a, b) =>
         b.score - a.score ||
-        String(b.article.updatedAt || "").localeCompare(String(a.article.updatedAt || "")) ||
-        (a.article.order || 0) - (b.article.order || 0)
+        compareArticlesByLatestUpdate(a.article, b.article)
       )
       .map((item) => item.article);
   }
@@ -659,10 +664,7 @@ function getVisibleArticles() {
       if (state.category && getArticleTopic(article).id !== state.category) return false;
       return true;
     })
-    .sort((a, b) => {
-      if (state.filter === "recent") return String(b.updatedAt || "").localeCompare(String(a.updatedAt || ""));
-      return (a.order || 0) - (b.order || 0);
-    });
+    .sort(compareArticlesByLatestUpdate);
 }
 
 function scoreArticle(article, query) {
