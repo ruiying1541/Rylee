@@ -876,6 +876,11 @@ body[data-route="article"] .workspace {
   padding: 18px;
 }
 
+.lake-code-block {
+  line-height: 1.65;
+  white-space: pre;
+}
+
 .article-body pre code {
   background: transparent;
   color: inherit;

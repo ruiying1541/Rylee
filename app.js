@@ -917,6 +917,14 @@ function renderLakeHtml(html) {
 }
 
 function renderLakeCard(card, attrs) {
+  const cardName = String(attrs.name || card.name || card.type || "").toLowerCase();
+
+  if (cardName === "codeblock" || typeof card.code === "string") {
+    const mode = String(card.mode || "").trim().toLowerCase();
+    const modeClass = mode && mode !== "plain" && /^[a-z0-9_-]+$/.test(mode) ? ` language-${mode}` : "";
+    return `<pre class="lake-code-block${modeClass}"><code>${escapeHtml(String(card.code || ""))}</code></pre>`;
+  }
+
   const title = card.detail?.title || card.name || attrs.name || "语雀卡片";
   const desc = card.detail?.desc || "";
   const url = card.detail?.url || card.url || card.src || "";
