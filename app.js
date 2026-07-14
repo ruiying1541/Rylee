@@ -47,9 +47,9 @@ const topicGroups = [
   },
   {
     id: "designer-ai-matrix",
-    title: "产品设计师 AI 能力体系",
-    keywords: ["产品设计师ai能力矩阵", "能力矩阵", "产品设计师"],
-    parts: ["part3", "产品设计师ai能力矩阵"]
+    title: "设计师 AI 能力体系",
+    keywords: ["设计师ai能力体系", "设计师ai能力矩阵", "产品设计师ai能力矩阵", "能力矩阵", "产品设计师"],
+    parts: ["part3", "设计师ai能力体系", "产品设计师ai能力矩阵"]
   },
   {
     id: "ai-experience-methods",
@@ -101,6 +101,7 @@ let hasInitialized = false;
 let articleRenderToken = 0;
 
 setupAccessGate();
+document.addEventListener("click", handleArticleAnchorClick);
 
 function setupAccessGate() {
   const authScreen = document.querySelector("#authScreen");
@@ -148,6 +149,18 @@ function setupAccessGate() {
     if (authError) authError.textContent = "密码不正确，请重新输入。";
     passwordInput.select();
   });
+}
+
+function handleArticleAnchorClick(event) {
+  const anchor = event.target.closest(".article-body a[href^='#trend-']");
+  if (!anchor) return;
+
+  const targetId = anchor.getAttribute("href").slice(1);
+  const target = document.getElementById(targetId);
+  if (!target) return;
+
+  event.preventDefault();
+  target.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 async function init() {
@@ -603,7 +616,7 @@ function renderCover(article, displayIndex = 0) {
 
 function formatDisplayTitle(value) {
   return String(value || "")
-    .replace(/^\s*\d+(?:\.\d+)*[\.、\s]+/, "")
+    .replace(/^\s*\d+(?:\.\d+)*[\.、．:：\-)）/]+\s*/, "")
     .replace(/^\s*专题\s*[一二三四五六七八九十百千万0-9]+\s*[：:、.．\-—]\s*/, "")
     .trim();
 }
