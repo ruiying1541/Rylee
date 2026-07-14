@@ -5,6 +5,7 @@ const state = {
   introArticle: null,
   articleDetails: new Map(),
   imageMap: {},
+  imageMapPromise: null,
   query: "",
   filter: "all",
   category: ""
@@ -164,13 +165,9 @@ function handleArticleAnchorClick(event) {
 }
 
 async function init() {
-  const [articlesResponse, imageMapResponse] = await Promise.all([
-    fetchJson("./data/articles-index.json").catch(() => fetchJson("./data/articles.json")),
-    fetchJson("./data/image-map.json").catch(() => ({}))
-  ]);
+  const articlesResponse = await fetchJson("./data/articles-index.json").catch(() => fetchJson("./data/articles.json"));
   const payload = articlesResponse;
   const allArticles = payload.articles || [];
-  state.imageMap = imageMapResponse || {};
   state.updatesArticle = allArticles.find((article) => isUpdatesArticle(article)) || null;
   state.introArticle = allArticles.find((article) => isIntroArticle(article)) || null;
   state.articles = allArticles.filter(shouldShowArticle);
@@ -481,12 +478,13 @@ async function renderArticle(article) {
 
   const topic = getArticleTopic(article);
   articleList.innerHTML = "";
-  reader.innerHTML = renderArticleShell(article, topic, article.html ? renderLakeHtml(article.html) : `<div class="article-loading">正文加载中...</div>`);
-
-  if (article.html) return;
+  reader.innerHTML = renderArticleShell(article, topic, `<div class="article-loading">正文加载中...</div>`);
 
   try {
-    const articleDetail = await loadArticleDetail(article);
+    const [articleDetail] = await Promise.all([
+      article.html ? Promise.resolve(article) : loadArticleDetail(article),
+      loadImageMap()
+    ]);
     if (token !== articleRenderToken) return;
     const mergedArticle = { ...article, ...articleDetail };
     Object.assign(article, mergedArticle);
@@ -526,6 +524,22 @@ async function loadArticleDetail(article) {
   const detail = await fetchJson(`./data/articles/${encodeURIComponent(article.slug)}.json`);
   state.articleDetails.set(article.slug, detail);
   return detail;
+}
+
+async function loadImageMap() {
+  if (Object.keys(state.imageMap).length) return state.imageMap;
+  if (!state.imageMapPromise) {
+    state.imageMapPromise = fetchJson("./data/image-map.json")
+      .then((imageMap) => {
+        state.imageMap = imageMap || {};
+        return state.imageMap;
+      })
+      .catch(() => {
+        state.imageMap = {};
+        return state.imageMap;
+      });
+  }
+  return state.imageMapPromise;
 }
 
 function renderNavState() {
