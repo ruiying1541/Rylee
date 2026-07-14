@@ -453,6 +453,18 @@ function compareArticlesByLatestUpdate(a, b) {
   return (b.order || 0) - (a.order || 0);
 }
 
+function compareArticlesByTopicThenLatest(a, b) {
+  const topicCompare = getTopicSortIndex(a) - getTopicSortIndex(b);
+  if (topicCompare) return topicCompare;
+  return compareArticlesByLatestUpdate(a, b);
+}
+
+function getTopicSortIndex(article) {
+  const topicId = getArticleTopic(article).id;
+  const index = topicGroups.findIndex((topic) => topic.id === topicId);
+  return index === -1 ? topicGroups.length : index;
+}
+
 function getRecentArticles() {
   return [...state.articles]
     .filter((article) => article.updatedAt)
@@ -737,7 +749,9 @@ function getVisibleArticles() {
       if (state.category && getArticleTopic(article).id !== state.category) return false;
       return true;
     })
-    .sort(compareArticlesByLatestUpdate);
+    .sort(state.filter === "recent" || state.category
+      ? compareArticlesByLatestUpdate
+      : compareArticlesByTopicThenLatest);
 }
 
 function scoreArticle(article, query) {
@@ -800,6 +814,13 @@ function getArticleTopic(article) {
     article.category,
     ...(article.tags || [])
   ].join(" "));
+
+  const trendTopic = topicGroups.find((topic) => topic.id === "ai-trend-monitor");
+  if (trendTopic && (trendTopic.parts || []).some((part) =>
+    structuredHaystack.includes(normalizeTopicText(part))
+  )) {
+    return trendTopic;
+  }
 
   if (isSkillArticle(fullHaystack)) {
     return topicGroups.find((topic) => topic.id === "skill-library") || topicGroups[0];
