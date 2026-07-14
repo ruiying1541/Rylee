@@ -29,49 +29,49 @@ const coverPalettes = [
 const topicGroups = [
   {
     id: "vibe-coding",
-    title: "VibeCoding工作流",
+    title: "Vibe Coding 工作流",
     keywords: ["vibe", "coding", "工作流搭建", "工作流", "claude code", "figma", "cursorrules"],
     parts: ["part1", "ai设计工作流", "vibe coding"]
   },
   {
     id: "skill-library",
-    title: "Skill库",
+    title: "AI 设计 Skill 库",
     keywords: ["skill", "skills", "claude skill", "claude skills", "设计skill", "技能", "skills库"],
     parts: ["skill", "skills", "技能"]
   },
   {
     id: "ai-design-basics",
-    title: "人工智能设计基础",
+    title: "AI 设计基础知识",
     keywords: ["大模型入门", "大模型应用", "人工智能", "基础", "访谈", "观点", "趋势", "未分类", "更新记录", "资源合集", "ai学习"],
     parts: ["part2", "人工智能设计基础"]
   },
   {
     id: "designer-ai-matrix",
-    title: "产品设计师AI能力矩阵",
+    title: "产品设计师 AI 能力体系",
     keywords: ["产品设计师ai能力矩阵", "能力矩阵", "产品设计师"],
     parts: ["part3", "产品设计师ai能力矩阵"]
   },
   {
     id: "ai-experience-methods",
-    title: "AI驱动的体验设计方法",
+    title: "AI 体验设计方法论",
     keywords: ["体验设计", "ai-ux", "体验模式", "体验度量", "心智模型", "设计原则", "机器人", "hri"],
     parts: ["part4", "ai驱动的体验设计", "ai驱动的体验设计方法", "part8", "机器人交互hri"]
   },
   {
     id: "enterprise-design-systems",
-    title: "大厂AI设计系统与案例",
+    title: "大厂 AI 设计系统",
     keywords: ["设计系统", "指南", "大厂"],
     parts: ["part5", "ai设计系统"]
   },
   {
     id: "ai-product-cases",
-    title: "AI产品设计案例库",
+    title: "AI 产品设计案例",
     keywords: ["海外产品", "国内产品", "产品案例", "案例库"],
     parts: ["part6", "ai产品设计案例"]
   },
   {
     id: "end-to-end-efficiency",
-    title: "设计全流程AI提效指南",
+    title: "设计全流程 AI 提效",
     keywords: ["part7", "设计全流程ai提效指南", "设计全流程 ai 提效指南", "设计提示词集合", "用ai做海报", "用 ai 做海报", "用ai做动效", "用 ai 做动效"],
     parts: ["part7", "设计全流程ai提效指南"]
   }
