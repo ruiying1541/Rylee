@@ -131,7 +131,7 @@ function setupAccessGate() {
     return;
   }
 
-  if (sessionStorage.getItem(AUTH_STORAGE_KEY) === "granted") {
+  if (getAuthState() === "granted") {
     unlock();
     return;
   }
@@ -140,7 +140,7 @@ function setupAccessGate() {
   authForm.addEventListener("submit", (event) => {
     event.preventDefault();
     if (passwordInput.value.trim() === ACCESS_PASSWORD) {
-      sessionStorage.setItem(AUTH_STORAGE_KEY, "granted");
+      setAuthState("granted");
       passwordInput.value = "";
       if (authError) authError.textContent = "";
       unlock();
@@ -150,6 +150,22 @@ function setupAccessGate() {
     if (authError) authError.textContent = "密码不正确，请重新输入。";
     passwordInput.select();
   });
+}
+
+function getAuthState() {
+  try {
+    return sessionStorage.getItem(AUTH_STORAGE_KEY);
+  } catch {
+    return "";
+  }
+}
+
+function setAuthState(value) {
+  try {
+    sessionStorage.setItem(AUTH_STORAGE_KEY, value);
+  } catch {
+    // Some privacy modes block sessionStorage; password validation should still unlock the page.
+  }
 }
 
 function handleArticleAnchorClick(event) {
