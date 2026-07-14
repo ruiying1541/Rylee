@@ -900,6 +900,68 @@ body[data-route="article"] .workspace {
   background: var(--surface-soft);
 }
 
+.trend-lead {
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  background: #fff8f5;
+  padding: 16px 18px;
+  color: #4f3733;
+}
+
+.trend-dashboard,
+.trend-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 18px 0 28px;
+}
+
+.trend-dashboard div,
+.trend-summary-grid div,
+.trend-month-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  padding: 16px;
+}
+
+.trend-dashboard strong,
+.trend-dashboard span,
+.trend-summary-grid strong {
+  display: block;
+}
+
+.trend-dashboard strong,
+.trend-summary-grid strong {
+  color: var(--text);
+}
+
+.trend-dashboard span,
+.trend-summary-grid p,
+.trend-month-kicker {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.trend-month-card {
+  background: linear-gradient(180deg, #fff, #fafafa);
+}
+
+.trend-month-card h3 {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.trend-month-kicker {
+  margin-top: 0;
+}
+
+.trend-source-list a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
 @media (min-width: 1500px) {
   .card-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -988,5 +1050,10 @@ body[data-route="article"] .workspace {
 
   .reader h1 {
     font-size: 28px;
+  }
+
+  .trend-dashboard,
+  .trend-summary-grid {
+    grid-template-columns: 1fr;
   }
 }

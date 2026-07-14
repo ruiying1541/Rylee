@@ -74,9 +74,16 @@ const topicGroups = [
     title: "设计全流程 AI 提效",
     keywords: ["part7", "设计全流程ai提效指南", "设计全流程 ai 提效指南", "设计全流程ai提效", "设计全流程 ai 提效", "提效", "设计提示词集合", "用ai做海报", "用 ai 做海报", "用ai做动效", "用 ai 做动效"],
     parts: ["part7", "设计全流程ai提效指南", "设计全流程ai提效"]
+  },
+  {
+    id: "ai-trend-monitor",
+    title: "AI热点监控",
+    keywords: ["ai热点", "热点监控", "ai设计观察", "月度观察", "月报", "趋势监控", "热点观察"],
+    parts: ["ai热点监控", "ai设计观察"]
   }
 ];
 const topicMatchOrder = [
+  "ai-trend-monitor",
   "skill-library",
   "end-to-end-efficiency",
   "designer-ai-matrix",
