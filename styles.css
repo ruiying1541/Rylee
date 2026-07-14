@@ -1041,6 +1041,124 @@ body[data-route="article"] .workspace {
   color: var(--accent);
 }
 
+.trend-zcool-layout {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.trend-zcool-cover {
+  margin: 0 0 36px;
+}
+
+.trend-zcool-cover img {
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.trend-zcool-cover figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.trend-zcool-layout .trend-lead {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+.trend-zcool-layout .trend-dashboard {
+  grid-template-columns: repeat(3, 1fr);
+  margin: 34px 0;
+}
+
+.trend-zcool-layout .trend-dashboard div {
+  border-radius: 0;
+  background: #fafafa;
+}
+
+.trend-zcool-layout .trend-zcool-toc {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 20px 0 44px;
+}
+
+.trend-zcool-layout .trend-zcool-toc > li {
+  border-radius: 0;
+  background: #fafafa;
+  transition: border-color 0.16s ease, transform 0.16s ease;
+}
+
+.trend-zcool-layout .trend-zcool-toc > li:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.trend-zcool-section-title {
+  margin-top: 54px;
+  text-align: center;
+}
+
+.trend-zcool-flow {
+  display: block;
+  margin-top: 26px;
+}
+
+.trend-zcool-layout .trend-item {
+  display: block;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0 0 64px;
+}
+
+.trend-zcool-layout .trend-figure {
+  margin: 0 0 22px;
+}
+
+.trend-zcool-layout .trend-figure img {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  border: 0;
+  border-radius: 0;
+  object-fit: contain;
+}
+
+.trend-zcool-layout .trend-figure figcaption {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.trend-zcool-layout .trend-item-copy {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.trend-zcool-layout .trend-month-kicker {
+  margin-bottom: 4px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.trend-zcool-layout .trend-item-copy h3 {
+  margin: 0 0 14px;
+  font-size: 26px;
+}
+
+.trend-zcool-layout .trend-item-copy p {
+  font-size: 16px;
+  line-height: 1.9;
+}
+
 .trend-item-copy {
   align-self: center;
 }
@@ -1144,6 +1262,19 @@ body[data-route="article"] .workspace {
   .trend-toc,
   .trend-item {
     grid-template-columns: 1fr;
+  }
+
+  .trend-zcool-layout .trend-dashboard,
+  .trend-zcool-layout .trend-zcool-toc {
+    grid-template-columns: 1fr;
+  }
+
+  .trend-zcool-layout .trend-item {
+    margin-bottom: 44px;
+  }
+
+  .trend-zcool-layout .trend-item-copy h3 {
+    font-size: 22px;
   }
 
   .trend-figure img {
