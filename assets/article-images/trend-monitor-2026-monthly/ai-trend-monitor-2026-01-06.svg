@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="2026.01 生成结果需要可解释">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#18212f"/><stop offset="1" stop-color="#0b1020"/></linearGradient><radialGradient id="r" cx="78%" cy="18%" r="60%"><stop offset="0" stop-color="#ff6b35" stop-opacity="0.55"/><stop offset="1" stop-color="#ff6b35" stop-opacity="0"/></radialGradient></defs>
+  <rect width="960" height="540" rx="32" fill="url(#g)"/><rect width="960" height="540" rx="32" fill="url(#r)"/>
+  <path d="M70 405 C210 310, 310 458, 452 354 S730 272, 892 370" fill="none" stroke="#ffd166" stroke-opacity="0.38" stroke-width="6"/>
+  <path d="M70 433 C242 333, 328 486, 488 384 S726 304, 892 410" fill="none" stroke="#ff6b35" stroke-opacity="0.72" stroke-width="4"/>
+  <rect x="52" y="48" width="856" height="444" rx="28" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="84" y="104" fill="#ffd166" font-family="Arial, 'PingFang SC', sans-serif" font-size="26" font-weight="700">AI DESIGN TREND MONITOR</text>
+  <text x="84" y="150" fill="#ffffff" font-family="Arial, 'PingFang SC', sans-serif" font-size="54" font-weight="800">2026.01</text>
+  <text x="780" y="150" fill="#ff6b35" font-family="Arial, 'PingFang SC', sans-serif" font-size="78" font-weight="900">06</text>
+  <text x="84" y="232" fill="#ffffff" font-family="Arial, 'PingFang SC', sans-serif" font-size="42" font-weight="800">生成结果需要可解释</text>
+  <rect x="84" y="312" width="112" height="6" rx="3" fill="#ff6b35"/>
+  <text x="84" y="362" fill="rgba(255,255,255,0.82)" font-family="Arial, 'PingFang SC', sans-serif" font-size="24">语义引导系统让用户看到设计语义如何体</text>
+  <text x="84" y="392" fill="rgba(255,255,255,0.82)" font-family="Arial, 'PingFang SC', sans-serif" font-size="24">现在生成 UI 中，提升对结果的理解</text>
+  <text x="84" y="422" fill="rgba(255,255,255,0.82)" font-family="Arial, 'PingFang SC', sans-serif" font-size="24">和修改能力。</text>
+  <circle cx="780" cy="378" r="56" fill="#ff6b35" fill-opacity="0.18" stroke="#ffd166" stroke-opacity="0.55" stroke-width="3"/><text x="780" y="390" text-anchor="middle" fill="#ffd166" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" font-weight="800">HOT</text>
+</svg>
