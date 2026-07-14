@@ -89,6 +89,7 @@ const topicMatchOrder = [
 
 const ACCESS_PASSWORD = "0304";
 const AUTH_STORAGE_KEY = "ryleeKnowledgeAccess";
+const PUBLIC_SITE_URL = "https://ruiying1541.github.io/Rylee/#/";
 let hasInitialized = false;
 let articleRenderToken = 0;
 
@@ -101,6 +102,11 @@ function setupAccessGate() {
   const authError = document.querySelector("#authError");
 
   const unlock = () => {
+    if (location.protocol === "file:") {
+      location.href = PUBLIC_SITE_URL;
+      return;
+    }
+
     document.body.classList.remove("auth-locked");
     document.body.classList.add("auth-unlocked");
     if (hasInitialized) return;
