@@ -962,6 +962,75 @@ body[data-route="article"] .workspace {
   text-decoration: none;
 }
 
+.trend-toc {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.trend-toc > li {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  padding: 14px 16px;
+}
+
+.trend-toc a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.trend-toc > li > a {
+  font-weight: 700;
+}
+
+.trend-toc ol {
+  margin: 10px 0 0;
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.trend-item-grid {
+  display: grid;
+  gap: 18px;
+  margin: 18px 0 30px;
+}
+
+.trend-item {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.92fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: stretch;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  padding: 14px;
+}
+
+.trend-figure {
+  margin: 0;
+}
+
+.trend-figure img {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.trend-item-copy {
+  align-self: center;
+}
+
+.trend-item-copy h3 {
+  margin-top: 6px;
+}
+
 @media (min-width: 1500px) {
   .card-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1053,7 +1122,13 @@ body[data-route="article"] .workspace {
   }
 
   .trend-dashboard,
-  .trend-summary-grid {
+  .trend-summary-grid,
+  .trend-toc,
+  .trend-item {
     grid-template-columns: 1fr;
+  }
+
+  .trend-figure img {
+    min-height: 0;
   }
 }
