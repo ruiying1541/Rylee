@@ -995,7 +995,8 @@ body[data-route="article"] .workspace {
   text-decoration: none;
 }
 
-.trend-toc > li > a {
+.trend-toc > li > a,
+.trend-toc > li > span {
   font-weight: 700;
 }
 
@@ -1109,9 +1110,18 @@ body[data-route="article"] .workspace {
   transition: border-color 0.16s ease, transform 0.16s ease;
 }
 
+.trend-zcool-layout .trend-static-toc > li {
+  transition: none;
+}
+
 .trend-zcool-layout .trend-zcool-toc > li:hover {
   border-color: var(--accent);
   transform: translateY(-1px);
+}
+
+.trend-zcool-layout .trend-static-toc > li:hover {
+  border-color: var(--line);
+  transform: none;
 }
 
 .trend-zcool-section-title {
