@@ -72,8 +72,8 @@ const topicGroups = [
   {
     id: "end-to-end-efficiency",
     title: "设计全流程 AI 提效",
-    keywords: ["part7", "设计全流程ai提效指南", "设计全流程 ai 提效指南", "设计提示词集合", "用ai做海报", "用 ai 做海报", "用ai做动效", "用 ai 做动效"],
-    parts: ["part7", "设计全流程ai提效指南"]
+    keywords: ["part7", "设计全流程ai提效指南", "设计全流程 ai 提效指南", "设计全流程ai提效", "设计全流程 ai 提效", "提效", "设计提示词集合", "用ai做海报", "用 ai 做海报", "用ai做动效", "用 ai 做动效"],
+    parts: ["part7", "设计全流程ai提效指南", "设计全流程ai提效"]
   }
 ];
 const topicMatchOrder = [
