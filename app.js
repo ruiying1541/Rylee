@@ -164,19 +164,16 @@ function handleArticleAnchorClick(event) {
 }
 
 async function init() {
-  const [articlesResponse, tocResponse, imageMapResponse] = await Promise.all([
+  const [articlesResponse, imageMapResponse] = await Promise.all([
     fetchJson("./data/articles-index.json").catch(() => fetchJson("./data/articles.json")),
-    fetchJson("./data/yuque-toc.json").catch(() => null),
     fetchJson("./data/image-map.json").catch(() => ({}))
   ]);
   const payload = articlesResponse;
-  const tocPayload = tocResponse || {};
   const allArticles = payload.articles || [];
   state.imageMap = imageMapResponse || {};
   state.updatesArticle = allArticles.find((article) => isUpdatesArticle(article)) || null;
   state.introArticle = allArticles.find((article) => isIntroArticle(article)) || null;
   state.articles = allArticles.filter(shouldShowArticle);
-  state.toc = (tocPayload.toc || []).filter((item) => item.type !== "DOC" || shouldShowArticle({ title: item.title, slug: item.url }));
   renderMetrics({
     ...payload,
     totalWords: state.articles.reduce((sum, article) => sum + (article.wordCount || 0), 0)
@@ -364,12 +361,7 @@ function renderHome() {
 
 function renderCatalog() {
   reader.innerHTML = "";
-  const rows = state.toc.length ? state.toc : state.articles.map((article) => ({
-    type: "DOC",
-    title: article.title,
-    url: article.slug,
-    level: article.level || 0
-  }));
+  const rows = buildPlatformCatalogRows();
 
   articleList.innerHTML = `
     <div class="catalog-page">
@@ -382,6 +374,28 @@ function renderCatalog() {
       </div>
     </div>
   `;
+}
+
+function buildPlatformCatalogRows() {
+  const sortedArticles = [...state.articles].sort(compareArticlesByLatestUpdate);
+  return topicGroups.flatMap((topic, index) => {
+    const articles = sortedArticles.filter((article) => getArticleTopic(article).id === topic.id);
+    if (!articles.length) return [];
+
+    return [
+      {
+        type: "TITLE",
+        title: `${String(index + 2).padStart(2, "0")} ${topic.title}`,
+        level: 0
+      },
+      ...articles.map((article) => ({
+        type: "DOC",
+        title: article.title,
+        url: article.slug,
+        level: 1
+      }))
+    ];
+  });
 }
 
 function renderUpdates() {
