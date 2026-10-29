@@ -834,6 +834,8 @@ function isSkillQuery(value) {
 }
 
 function getArticleTopic(article) {
+  const assignedTopic = topicGroups.find((topic) => topic.id === article.topicId);
+  if (assignedTopic) return assignedTopic;
   const structuredHaystack = normalizeTopicText([
     article.category,
     ...(article.tags || [])
@@ -967,6 +969,7 @@ function stripYuqueLinks(html) {
   const template = document.createElement("template");
   template.innerHTML = html;
   template.content.querySelectorAll("a[href]").forEach((link) => {
+    if (/^https:\/\/www\.yuque\.com\/office\//i.test(link.getAttribute("href") || "")) return;
     if (!isYuqueUrl(link.getAttribute("href"))) return;
     link.replaceWith(...link.childNodes);
   });
