@@ -928,7 +928,7 @@ body[data-route="article"] .workspace {
   line-height: 1.74;
 }
 
-.yuque-imported p { margin: 0 0 7.83px; min-height: 1.74em; }
+.yuque-imported p, .yuque-imported .yuque-paragraph { margin: 0 0 7.83px; min-height: 1.74em; }
 .yuque-imported h1 { font-size: 28px; }
 .yuque-imported h2 { font-size: 24px; line-height: 34px; margin: 34px 0 17px; padding: 0; border: 0; }
 .yuque-imported h3 { font-size: 20px; line-height: 30px; margin: 30px 0 15px; }
@@ -939,7 +939,7 @@ body[data-route="article"] .workspace {
 .yuque-imported .yuque-list-unordered > .yuque-list-marker span { font-size: inherit !important; }
 .yuque-imported input[type="checkbox"] { width: 14px; height: 14px; vertical-align: middle; margin: 0; }
 .yuque-imported figure { margin: 16px 0; padding: 0; max-width: 100%; }
-.yuque-imported img { border: 0; border-radius: 0; max-width: 100%; height: auto; }
+.yuque-imported img { display: inline-block; vertical-align: middle; border: 0; border-radius: 0; max-width: 100%; height: auto; }
 .yuque-imported img[hidden] { display: none; }
 .yuque-imported .yuque-image-unavailable { display: inline-block; padding: 12px; border: 1px solid #e7e9e8; color: #8c8c8c; font-size: 12px; }
 .yuque-imported blockquote { margin: 10px 0; padding: 0 0 0 10px; border-left: 3px solid #d8dad9; background: transparent; color: inherit; }
