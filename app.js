@@ -209,7 +209,10 @@ function shouldShowArticle(article) {
 }
 
 async function fetchJson(url) {
-  const response = await fetch(url);
+  const dataUrl = new URL(url, document.baseURI);
+  const version = new URL(import.meta.url).searchParams.get("v");
+  if (version) dataUrl.searchParams.set("v", version);
+  const response = await fetch(dataUrl);
   if (!response.ok) {
     throw new Error(`${url} 返回 ${response.status}`);
   }
