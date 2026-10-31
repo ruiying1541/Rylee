@@ -945,6 +945,7 @@ body[data-route="article"] .workspace {
 .yuque-imported blockquote { margin: 10px 0; padding: 0 0 0 10px; border-left: 3px solid #d8dad9; background: transparent; color: inherit; }
 .yuque-imported pre { margin: 16px 0; padding: 12px 16px; background: #f5f5f5; color: #595959; border: 1px solid #e7e9e8; border-radius: 4px; line-height: 20.3px; white-space: pre; overflow: auto; }
 .yuque-imported pre code { font-size: 14px; font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.yuque-imported pre .cm-atom { color: #004fb4; }
 .yuque-imported hr { margin: 24px 0; border: 0; border-top: 1px solid #e7e9e8; }
 .yuque-imported .yuque-table-scroll { max-width: 100%; overflow-x: auto; margin: 16px 0; }
 .yuque-imported table { min-width: 0; table-layout: fixed; }
